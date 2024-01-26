@@ -19,8 +19,6 @@ GITHUB_REPO = str(config('MAIN_REPO'))
 GITLAB_REPO = str(config('GITLAB_REPO'))
 SUBDIRECTORY = str(config('SUBDIRECTORY'))
 
-
-
 def gitrepo(directory):
     directory = git.Repo(directory)
     current = directory.head.commit
@@ -68,7 +66,7 @@ def gitlrepo(directory):
     #                 file_path = file_path.split("/")
     #                 file_path = (file_path[2])
     #                 file_path = file_path.replace('\\', '/')
-    #                 base_gitlab_url = "https://git.bootcampcontent.com/University-of-Minnesota/UofM-VIRT-CYBER-PT-12-2023-U-LOLC-ENTG/-/blob/main/"
+    #                 base_gitlab_url = "BOOTCAMP_BASE_URL"
     #                 new_url = f"{base_gitlab_url}{file_path}"
     #                 o.write(str(new_url))
     #                 o.write("\n")
@@ -149,7 +147,6 @@ def extract_links_from_directory(directory):
                             links.append(link)
                             o.write(str(link))
                             o.write("\n")
-        return links
         
 def url_to_id(url):
     x = url.split("/")
