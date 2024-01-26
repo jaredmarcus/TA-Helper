@@ -2,3 +2,4 @@ python-gitlab
 GitPython
 beautifulsoup4
 gdown
+python-decouple

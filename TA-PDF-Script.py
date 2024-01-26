@@ -1,3 +1,4 @@
+from decouple import config
 from bs4 import BeautifulSoup
 from sys import platform
 import glob, os
@@ -12,8 +13,8 @@ import git
 import gitlab
 import base64
 
-GITLAB_TOKEN = str(os.getenv('GITLAB_TOKEN'))
-GITLAB_PROJECT = os.getenv('PROJECT_ID')
+GITLAB_TOKEN = str(config('GITLAB_TOKEN'))
+GITLAB_PROJECT = int(config('PROJECT_ID'))
 
 def gitrepo(directory):
     directory = git.Repo(directory)
