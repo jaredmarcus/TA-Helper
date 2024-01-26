@@ -15,6 +15,11 @@ import base64
 
 GITLAB_TOKEN = str(config('GITLAB_TOKEN'))
 GITLAB_PROJECT = int(config('PROJECT_ID'))
+GITHUB_REPO = str(config('MAIN_REPO'))
+GITLAB_REPO = str(config('GITLAB_REPO'))
+SUBDIRECTORY = str(config('SUBDIRECTORY'))
+
+
 
 def gitrepo(directory):
     directory = git.Repo(directory)
@@ -226,10 +231,10 @@ def downloader():
                         shutil.move(os.path.join(source_dir, fname), dest_dir)
 
 if __name__ == '__main__':
-    mainrepo = "./cybersecurity-24weeks/"
-    gitlabrepo = "./UofM-VIRT-CYBER-PT-12-2023-U-LOLC-ENTG/"
-    sub_directory = "./cybersecurity-24weeks/v3.0-Curriculum/1-Lesson-Plans"
+    mainrepo = f"./{GITHUB_REPO}/"
+    gitlabrepo = f"./{GITLAB_REPO}/"
+    sub_directory = f"./{GITHUB_REPO}/{SUBDIRECTORY}"
     gitrepo(mainrepo)
     gitlrepo(gitlabrepo)
     extract_links_from_directory(sub_directory)
-    # downloader()
+    # d
