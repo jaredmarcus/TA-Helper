@@ -1,6 +1,11 @@
-# edX Bootcamp Helper
-
-After about 4 cohorts of the pain of going to each gitlab repo for the class to find student guide links and then finding the link to the google slides and then downloading them. This script does it for you. 
+<div align="center">
+  <h1>edX Bootcamp Staff Helper</h1>
+  <p><b>Teaching Assistant Helper | Time = Efficient</b></p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/EdX_newer_logo.svg/1200px-EdX_newer_logo.png" width="50%">
+  <br>
+  <br>
+</div>
+After about 4 cohorts as a TA with the pain of going to each gitlab repo for the class to find student guide links and then finding the link to the google slides and then downloading them. This script does it for you. Scripts = efficiency
 
 This script was made to ease the task of being a TA at the bootcamps. Features:
 - **Check Master Cirriculum Repo (via git API)** Check if the hashes match, otherwise pull down
@@ -26,11 +31,11 @@ The main feature of the script is to obtain links to the studentguides hosted on
 pip install -r requirements.txt
 ```
 ### Packages Utilized
-[Python-Gitlab](https://github.com/python-gitlab/python-gitlab) - Python wrapper for Gitlab API
-[GitPython](https://github.com/gitpython-developers/GitPython) - Python wrapper for Git API
-[BS4](https://pypi.org/project/beautifulsoup4/) - A library to scrape webpages for info
-[Gdown](https://github.com/wkentaro/gdown) - A google drive public file/folder downloader
-[Python-decouple](https://github.com/HBNetwork/python-decouple) - A better way to organize settings
+ - [Python-Gitlab](https://github.com/python-gitlab/python-gitlab) - Python wrapper for Gitlab API
+ - [GitPython](https://github.com/gitpython-developers/GitPython) - Python wrapper for Git API
+ - [BS4](https://pypi.org/project/beautifulsoup4/) - A library to scrape webpages for info
+ - [Gdown](https://github.com/wkentaro/gdown) - A google drive public file/folder downloader
+ - [Python-decouple](https://github.com/HBNetwork/python-decouple) - A better way to organize settings
 
 ## Enviromental Variables
 
@@ -42,7 +47,8 @@ pip install -r requirements.txt
 
 ### Help With Enviromental Variables
  - `GITLABTOKEN` - https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
- - `PROJECT_ID` - Usually found at the bottom of the repo name![](https://i.stack.imgur.com/u0K4w.png)
+ - `PROJECT_ID` - Usually found at the bottom of the repo name\
+   ![Link To Example](https://i.stack.imgur.com/u0K4w.png)
  - `MAINREPO`- This will just be the file location within your cwd
  - `GITLAB_REPO` - This will just be the file location within your cwd
  - `SUBDIRECTORY` - This will just be the file location within the mainrepo housing our curriculum within your cwd
