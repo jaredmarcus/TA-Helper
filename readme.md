@@ -41,8 +41,8 @@ pip install -r requirements.txt
     SUBDIRECTORY=<file_location_within_main_repo_housing_lesson_plans>
 
 ### Help With Enviromental Variables
-`GITLABTOKEN` - https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
-`PROJECT_ID` - Usually found at the bottom of the repo name![](https://i.stack.imgur.com/u0K4w.png)
-`MAINREPO`- This will just be the file location within your cwd
-`GITLAB_REPO` - This will just be the file location within your cwd
-`SUBDIRECTORY` - This will just be the file location within the mainrepo housing our curriculum within your cwd
+ - `GITLABTOKEN` - https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
+ - `PROJECT_ID` - Usually found at the bottom of the repo name![](https://i.stack.imgur.com/u0K4w.png)
+ - `MAINREPO`- This will just be the file location within your cwd
+ - `GITLAB_REPO` - This will just be the file location within your cwd
+ - `SUBDIRECTORY` - This will just be the file location within the mainrepo housing our curriculum within your cwd
