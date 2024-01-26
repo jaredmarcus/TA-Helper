@@ -237,4 +237,4 @@ if __name__ == '__main__':
     gitrepo(mainrepo)
     gitlrepo(gitlabrepo)
     extract_links_from_directory(sub_directory)
-    # d
+    downloader()
