@@ -233,5 +233,5 @@ if __name__ == '__main__':
     sub_directory = f"./{GITHUB_REPO}/{SUBDIRECTORY}"
     gitrepo(mainrepo)
     gitlrepo(gitlabrepo)
-    # extract_links_from_directory(sub_directory)
-    # downloader()
+    extract_links_from_directory(sub_directory)
+    downloader()
