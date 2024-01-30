@@ -82,7 +82,7 @@ def gitlrepo(directory):
                     file_path = os.path.join(root, file)
                     # print(file_path)
                     file_path = file_path.split("/")
-                    file_path = (file_path[2])
+                    file_path = (file_path[1])
                     file_path = file_path.replace('\\', '/')
                     local+=1
                     try:
@@ -110,7 +110,7 @@ def gitlrepo(directory):
         for item_1 in sub_dir:
             sub_subdir = project.repository_tree(path=item_1['path'])
             for item_2 in sub_subdir:
-                if(str(item_2['name']).lower() ==  "studentguide"):
+                if("studentguide" in str(item_2['name']).lower()):
                     remote+=1
     print(f"SGs In Master Gitlab Repo: {remote}\n")
 
@@ -228,10 +228,10 @@ def downloader():
                         shutil.move(os.path.join(source_dir, fname), dest_dir)
 
 if __name__ == '__main__':
-    mainrepo = f"./{GITHUB_REPO}/"
-    gitlabrepo = f"./{GITLAB_REPO}/"
+    mainrepo = f"./{GITHUB_REPO}"
+    gitlabrepo = f"./{GITLAB_REPO}"
     sub_directory = f"./{GITHUB_REPO}/{SUBDIRECTORY}"
     gitrepo(mainrepo)
     gitlrepo(gitlabrepo)
-    extract_links_from_directory(sub_directory)
-    downloader()
+    # extract_links_from_directory(sub_directory)
+    # downloader()
