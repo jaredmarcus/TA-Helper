@@ -84,6 +84,7 @@ def gitlrepo(directory):
                     file_path = file_path.split("/")
                     file_path = (file_path[1])
                     file_path = file_path.replace('\\', '/')
+                    file_path = file_path.replace(f"{GITLAB_REPO}/", "")
                     local+=1
                     try:
                         f = project.files.get(file_path=file_path, ref=branch)
@@ -98,8 +99,8 @@ def gitlrepo(directory):
                         ## IF YOU WANT TO PRINT CONTENT OF A FILE
                         # file_content = base64.b64decode(f.content).decode("utf-8")
                         # print(file_content.replace('\\n', '\n'))
-                    except:
-                        "Error"
+                    except Exception as error:
+                        print(error)
     print(f"SGs In Local Gitlab Repo: {local}")
 
 
@@ -131,6 +132,7 @@ def extract_google_drive_link(text):
 def extract_links_from_directory(directory):
     links = []
     ## RECREATE FILE (CLEAR CONTENTS)
+    print("Begining to compile slide links...")
     open("slide_links.txt", "w").close()
     
     with open("slide_links.txt", 'w') as o:
@@ -147,6 +149,8 @@ def extract_links_from_directory(directory):
                             links.append(link)
                             o.write(str(link))
                             o.write("\n")
+    print("Slide links Compiled!\n")
+
         
 def url_to_id(url):
     x = url.split("/")

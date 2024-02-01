@@ -39,11 +39,11 @@ pip install -r requirements.txt
 
 ## Enviromental Variables
 
-    GITLABTOKEN=<Your_Personal_Access_Token>
+    GITLABTOKEN="<Your_Personal_Access_Token>"
     PROJECT_ID=<PID>
-    MAINREPO=<file_location_for_master_cirriculum_repo>
-    GITLAB_REPO=<file_location_for_class_cirriculum_repo>
-    SUBDIRECTORY=<file_location_within_main_repo_housing_lesson_plans>
+    MAINREPO="<file_location_for_master_cirriculum_repo>"
+    GITLAB_REPO="<file_location_for_class_cirriculum_repo>"
+    SUBDIRECTORY="<file_location_within_main_repo_housing_lesson_plans>"
 
 ### Help With Enviromental Variables
  - `GITLABTOKEN` - https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
