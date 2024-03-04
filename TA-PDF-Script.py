@@ -75,36 +75,41 @@ def gitlrepo(directory):
     branch = project.branches.list()[0].name
     local = 0
     remote = 0
-    with open("student_guides.txt", 'w') as o:
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                if file.endswith('.md') and "studentguide" in file.lower():
-                    file_path = os.path.join(root, file)
-                    # print(file_path)
-                    file_path = file_path.split("/")
-                    file_path = (file_path[1])
-                    file_path = file_path.replace('\\', '/')
-                    file_path = file_path.replace(f"{GITLAB_REPO}/", "")
+
+    ## SEARCH THROUGH DIRECTORIES ON THE LOCAL GITLAB REPO & COUNT STUDENT GUIDES
+    open("slide_links.txt", "w").close()
+
+    for root, dirs, files in os.walk(directory):
+        dirs.sort()
+        for file in files:
+            if file.endswith('.md') and "studentguide" in file.lower():
+                file_path = os.path.join(root, file)
+                # print(file_path)
+                # file_path = file_path.split("/")
+                # file_path = (file_path[1])
+                # file_path = file_path.replace('\\', '/')
+                # file_path = file_path.replace(f"./{GITLAB_REPO}", "")
+                file_path = file_path.removeprefix(f"./{GITLAB_REPO}")
+                try:
+                    f = project.files.get(file_path=file_path, ref=branch)
+                    repo_base_url = str(f.manager._parent.http_url_to_repo)
+                    repo_base_url = repo_base_url.removesuffix(".git")
+                    repo_base_url = f"{repo_base_url}/-/blob/main/"
+                    new_url = f"{repo_base_url}{f.file_path}"
                     local+=1
-                    try:
-                        f = project.files.get(file_path=file_path, ref=branch)
-                        repo_base_url = str(f.manager._parent.http_url_to_repo)
-                        repo_base_url = repo_base_url.removesuffix(".git")
-                        repo_base_url = f"{repo_base_url}/-/blob/main/"
-                        new_url = f"{repo_base_url}{f.file_path}"
-                        remote+=1
+                    with open("student_guides.txt", 'a') as o:
                         o.write(str(new_url))
                         o.write("\n")
 
-                        ## IF YOU WANT TO PRINT CONTENT OF A FILE
-                        # file_content = base64.b64decode(f.content).decode("utf-8")
-                        # print(file_content.replace('\\n', '\n'))
-                    except Exception as error:
-                        print(error)
+                    ## IF YOU WANT TO PRINT CONTENT OF A FILE
+                    # file_content = base64.b64decode(f.content).decode("utf-8")
+                    # print(file_content.replace('\\n', '\n'))
+                except Exception as error:
+                    print(error)
     print(f"SGs In Local Gitlab Repo: {local}")
 
 
-    ## SEARCH THROUGH DIRECTORIES ON THE GITLAB REPO & COUNT STUDENT GUIDES
+    ## SEARCH THROUGH DIRECTORIES ON THE REMOTE GITLAB REPO & COUNT STUDENT GUIDES
     main_dir = project.repository_tree()
     for item in main_dir:
         sub_dir = project.repository_tree(path=item['path'])
@@ -151,7 +156,6 @@ def extract_links_from_directory(directory):
                             o.write("\n")
     print("Slide links Compiled!\n")
 
-        
 def url_to_id(url):
     x = url.split("/")
     return x[5]
@@ -232,10 +236,10 @@ def downloader():
                         shutil.move(os.path.join(source_dir, fname), dest_dir)
 
 if __name__ == '__main__':
-    mainrepo = f"./{GITHUB_REPO}"
+    mainrepo = f"{GITHUB_REPO}"
     gitlabrepo = f"./{GITLAB_REPO}"
     sub_directory = f"./{GITHUB_REPO}/{SUBDIRECTORY}"
     gitrepo(mainrepo)
     gitlrepo(gitlabrepo)
     extract_links_from_directory(sub_directory)
-    downloader()
+    # downloader()
